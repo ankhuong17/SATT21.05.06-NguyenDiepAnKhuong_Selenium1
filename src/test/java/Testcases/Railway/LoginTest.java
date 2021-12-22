@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
 
 import java.io.IOException;
 
@@ -16,7 +18,7 @@ public class LoginTest {
     public void beforeMethod() throws IOException {
         System.out.println("Pre-condition");
 
-        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath()+"\\Executables\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath()+"\\src\\main\\java\\Executables\\chromedriver.exe");
         Constant.WEBDRIVER= new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
     }
@@ -26,7 +28,7 @@ public class LoginTest {
         System.out.println("Post-condition");
         Constant.WEBDRIVER.quit();
     }
-
+    @Test
     public void TC01(){
         System.out.println("TC01- User can log into Railway with valid username and password");
         HomePage homePage = new HomePage();
@@ -37,6 +39,6 @@ public class LoginTest {
         String actualMsg = loginPage.login(Constant.USERNAME,Constant.PASSWORD).getWelcomeMessage();
         String expectedMsg= "Welcome "+ Constant.USERNAME;
 
-        Assert.assertEquals(actualMsg,expectedMsg," Welcome message is not display as expected");
+        Assert.assertEquals(actualMsg,expectedMsg,"Welcome message is not display as expected");
     }
 }

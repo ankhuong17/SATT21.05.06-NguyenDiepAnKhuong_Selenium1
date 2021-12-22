@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends GeneralPage{
     private final By _txtUsername = By.xpath("//input[@id='username']");
     private final By _txtPassword = By.xpath("//input[@id='password']");
-    private final By _btnLogin = By.xpath("//input[@id='login']");
-    private final By _lblLoginErrorMsg = By.xpath("//input[@id='message error LoginForm']");
+    private final By _btnLogin = By.xpath("//input[@value='login']");
+    private final By _lblLoginErrorMsg = By.xpath("//p[@class ='message error LoginForm']");
 
     public WebElement getTxtUsername()
     {
@@ -18,10 +18,7 @@ public class LoginPage extends GeneralPage{
     {
         return Constant.WEBDRIVER.findElement(_txtPassword);
     }
-    public WebElement getBtnLogin()
-    {
-        return Constant.WEBDRIVER.findElement(_btnLogin);
-    }
+    public WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(_btnLogin); }
     public WebElement getLblLoginErrorMsg()
     {
         return Constant.WEBDRIVER.findElement(_lblLoginErrorMsg);
