@@ -16,6 +16,7 @@ public class GeneralPage {
     private final By lblTitle = By.xpath("//h1");
 
     private final By lblLoginErrorMsg = By.xpath("//p[@class ='message error LoginForm']");
+    private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
 
     public WebElement getLblLoginErrorMsg() {
         return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
@@ -41,6 +42,10 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(lblTitle);
     }
 
+    protected WebElement getTabRegister() {
+        return Constant.WEBDRIVER.findElement(tabRegister);
+    }
+
     //methods
     public String getWelcomeMessage() {
         return this.getlblWelcomeMessage().getText();
@@ -54,6 +59,10 @@ public class GeneralPage {
     public BookTicketPage gotoBookTicketPage() {
         this.getTabBookTicket().click();
         return new BookTicketPage();
+    }
+
+    public void gotoRegisterPage() {
+        this.getTabRegister().click();
     }
 
     public String getPageTitle() {

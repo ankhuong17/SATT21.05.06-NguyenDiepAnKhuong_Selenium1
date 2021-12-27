@@ -49,4 +49,21 @@ public class RegisterPage extends GeneralPage {
         this.getBtnRegister().click();
     }
 
+    public String getMessage(){
+        try{
+            return this.getLblRegisterMsg().getText();
+        }catch (Exception e){
+            return "";
+        }
+    }
+
+    public String getMessageError(){
+        try{
+            return this.getLblRegisterErrorMsg().getText();
+        }catch (Exception e){
+            return "";
+        }
+    }
+
 }
+
