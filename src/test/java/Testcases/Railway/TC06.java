@@ -6,16 +6,17 @@ import PageObjects.Railway.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC03 extends TestBase {
-    @Test(description = "TC03- User cannot login with invalid password")
-    public void TC03() {
+public class TC06 extends TestBase {
+    @Test(description = "TC03 - User is redirected to Home page after logging our")
+    public void TC06() {
         HomePage homePage = new HomePage();
         homePage.open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
-
-        String actualMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD + "111").getLoginErrorMsg();
-        String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
+        loginPage.logout();
+        String actualMsg = loginPage.getPageTitle();
+        String expectedMsg = "Welcome to Safe Railway";
 
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not display as expected");
     }

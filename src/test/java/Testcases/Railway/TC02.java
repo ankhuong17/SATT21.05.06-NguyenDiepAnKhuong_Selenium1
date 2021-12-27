@@ -13,20 +13,19 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC02 extends TestBase{
+public class TC02 extends TestBase {
 
-    @Test
-    public void TC02(){
-        System.out.println("TC02- User can't login with blank Username textbox");
+    @Test(description = "TC02- User can't login with blank Username textbox")
+    public void TC02() {
         HomePage homePage = new HomePage();
         homePage.open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
 
-        String actualMsg = loginPage.login(Constant.USERNAME_BLANK,Constant.PASSWORD).getLoginErrorMsg();
-        String expectedMsg= "There was a problem with your login and/or errors exist in your form.";
+        String actualMsg = loginPage.login(Constant.USERNAME_BLANK, Constant.PASSWORD).getLoginErrorMsg();
+        String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
 
-        Assert.assertEquals(actualMsg,expectedMsg,"Welcome message is not display as expected");
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not display as expected");
     }
 
 }

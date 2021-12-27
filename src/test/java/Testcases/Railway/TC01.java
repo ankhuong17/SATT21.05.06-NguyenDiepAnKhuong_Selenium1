@@ -15,17 +15,16 @@ import java.io.IOException;
 
 public class TC01 extends TestBase {
 
-    @Test
-    public void TC01(){
-        System.out.println("TC01- User can log into Railway with valid username and password");
+    @Test(description = "TC01- User can log into Railway with valid username and password")
+    public void TC01() {
         HomePage homePage = new HomePage();
         homePage.open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
 
-        String actualMsg = loginPage.login(Constant.USERNAME,Constant.PASSWORD).getWelcomeMessage();
-        String expectedMsg= "Welcome "+ Constant.USERNAME;
+        String actualMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD).getWelcomeMessage();
+        String expectedMsg = "Welcome " + Constant.USERNAME;
 
-        Assert.assertEquals(actualMsg,expectedMsg,"Welcome message is not display as expected");
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not display as expected");
     }
 }
