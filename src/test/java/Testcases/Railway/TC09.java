@@ -18,7 +18,7 @@ public class TC09 extends TestBase{
         homePage.gotoLoginPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD).gotoChangePasswordPage();
         ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-        System.out.println("4. Enter valid information into \"Current Password\" textbox but enter \"a123:\"/{}!@$\\\" into \"New Password\" textbox and \"b456:\"/{}!@$\\\" into \"Confirm Password\" textbox.");
+        System.out.println("");
         changePasswordPage.changePassword(Constant.PASSWORD,Constant.NEW_PASSWORD,Constant.INVALID_CONFIRM_PASSWORD);
 
         String actualMsg = changePasswordPage.getMessageError();
