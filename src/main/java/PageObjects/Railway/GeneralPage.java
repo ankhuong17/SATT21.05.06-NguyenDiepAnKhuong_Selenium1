@@ -17,10 +17,9 @@ public class GeneralPage {
 
     private final By lblLoginErrorMsg = By.xpath("//p[@class ='message error LoginForm']");
     private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
+    private final By tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
 
-    public WebElement getLblLoginErrorMsg() {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
-    }
+    public WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(lblLoginErrorMsg); }
 
     protected WebElement getTabLogin() {
         return Constant.WEBDRIVER.findElement(tabLogin);
@@ -46,7 +45,8 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
 
-    //methods
+    protected WebElement getTabChangePassword() { return Constant.WEBDRIVER.findElement(tabChangePassword); }
+
     public String getWelcomeMessage() {
         return this.getlblWelcomeMessage().getText();
     }
@@ -71,5 +71,9 @@ public class GeneralPage {
 
     public String getLoginErrorMsg() {
         return this.getLblLoginErrorMsg().getText();
+    }
+
+    public void gotoChangePasswordPage() {
+        this.getTabChangePassword().click();
     }
 }
