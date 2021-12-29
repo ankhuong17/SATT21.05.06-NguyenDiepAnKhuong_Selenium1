@@ -17,7 +17,7 @@ public class TC10 extends TestBase{
         System.out.println("2. Click on \"Register\" tab\n");
         homePage.gotoRegisterPage();
         System.out.println("3. Enter information of the created account in Pre-condition & 4. Click on \"Register\" button\n");
-        registerPage.register("6@gmail.com", Constant.PASSWORD,Constant.PASSWORD,Constant.PID);
+        registerPage.register(Constant.USERNAME, Constant.PASSWORD,Constant.PASSWORD,Constant.PID);
 
         String actualMsg = registerPage.getMessageError();
         String expectedMsg = "This email address is already in use.";

@@ -47,9 +47,14 @@ public class RegisterPage extends GeneralPage {
         this.getTxtPassword().sendKeys(password);
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
         this.getTxtPID().sendKeys(PID);
-        this.getBtnRegister().click();
+        WebElement link = this.getBtnRegister();
+        ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
+        link.click();
     }
 
+    //
+    //            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
+    //            link.click();
     public String getMessage() {
         try {
             return this.getLblRegisterMsg().getText();
