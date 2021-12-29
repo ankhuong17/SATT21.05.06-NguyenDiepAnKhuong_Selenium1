@@ -3,6 +3,7 @@ package Testcases.Railway;
 import Common.Common.Utilities;
 import Common.Constant.Constant;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

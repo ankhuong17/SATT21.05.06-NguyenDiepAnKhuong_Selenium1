@@ -2,6 +2,7 @@ package PageObjects.Railway;
 
 import Common.Constant.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
@@ -41,7 +42,7 @@ public class RegisterPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblRegisterMsg);
     }
 
-    public void register(String email, String password, String confirmPassword, String PID ){
+    public void register(String email, String password, String confirmPassword, String PID) {
         this.getTxtEmail().sendKeys(email);
         this.getTxtPassword().sendKeys(password);
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
@@ -49,18 +50,18 @@ public class RegisterPage extends GeneralPage {
         this.getBtnRegister().click();
     }
 
-    public String getMessage(){
-        try{
+    public String getMessage() {
+        try {
             return this.getLblRegisterMsg().getText();
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
 
-    public String getMessageError(){
-        try{
+    public String getMessageError() {
+        try {
             return this.getLblRegisterErrorMsg().getText();
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
