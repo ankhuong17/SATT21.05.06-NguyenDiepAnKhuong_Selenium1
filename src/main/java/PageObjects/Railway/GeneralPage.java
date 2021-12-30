@@ -6,20 +6,19 @@ import org.openqa.selenium.WebElement;
 
 public class GeneralPage {
     private final By tabLogin = By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']");
-
     private final By tabBookTicket = By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']");
-
     private final By tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
-
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']/strong");
-
-    private final By lblTitle = By.xpath("//h1");
-
+    private final By lblHomePageTitle = By.xpath("//h1[text()='Welcome to Safe Railway']");
+    private final By lblContactPageTitle = By.xpath("//h1[text()='Contact Information']");
     private final By lblLoginErrorMsg = By.xpath("//p[@class ='message error LoginForm']");
     private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
     private final By tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
+    private final By tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
 
-    public WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(lblLoginErrorMsg); }
+    public WebElement getLblLoginErrorMsg() {
+        return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
+    }
 
     protected WebElement getTabLogin() {
         return Constant.WEBDRIVER.findElement(tabLogin);
@@ -37,23 +36,33 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(lblWelcomeMessage);
     }
 
-    protected WebElement getTitle() {
-        return Constant.WEBDRIVER.findElement(lblTitle);
+    protected WebElement getLblHomePageTitle() {
+        return Constant.WEBDRIVER.findElement(lblHomePageTitle);
     }
 
     protected WebElement getTabRegister() {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
 
-    protected WebElement getTabChangePassword() { return Constant.WEBDRIVER.findElement(tabChangePassword); }
+    protected WebElement getTabChangePassword() {
+        return Constant.WEBDRIVER.findElement(tabChangePassword);
+    }
 
     public String getWelcomeMessage() {
         return this.getlblWelcomeMessage().getText();
     }
 
+    public WebElement getLblContactTitle() {
+        return Constant.WEBDRIVER.findElement(lblContactPageTitle);
+    }
+
     public LoginPage gotoLoginPage() {
         this.getTabLogin().click();
         return new LoginPage();
+    }
+
+    public WebElement getTabContact() {
+        return Constant.WEBDRIVER.findElement(tabContact);
     }
 
     public BookTicketPage gotoBookTicketPage() {
@@ -65,8 +74,8 @@ public class GeneralPage {
         this.getTabRegister().click();
     }
 
-    public String getPageTitle() {
-        return this.getTitle().getText();
+    public String getHomePageTitle() {
+        return this.getLblHomePageTitle().getText();
     }
 
     public String getLoginErrorMsg() {
@@ -75,5 +84,19 @@ public class GeneralPage {
 
     public void gotoChangePasswordPage() {
         this.getTabChangePassword().click();
+    }
+
+    public void gotoContactPage() {
+        this.getTabContact().click();
+    }
+
+    public boolean isContactPageDisplayed() {
+        boolean isDisplayed = this.getLblContactTitle().isDisplayed();
+        return isDisplayed;
+    }
+
+    public boolean isHomePageDisplayed() {
+        boolean isDisplayed = this.getLblHomePageTitle().isDisplayed();
+        return isDisplayed;
     }
 }

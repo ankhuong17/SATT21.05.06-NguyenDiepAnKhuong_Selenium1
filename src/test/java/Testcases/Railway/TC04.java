@@ -17,7 +17,7 @@ public class TC04 extends TestBase {
         homePage.gotoBookTicketPage();
         LoginPage loginPage = new LoginPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-        String actualMsg = loginPage.getPageTitle();
+        String actualMsg = loginPage.getHomePageTitle();
         String expectedMsg = "Book ticket";
 
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not display as expected");

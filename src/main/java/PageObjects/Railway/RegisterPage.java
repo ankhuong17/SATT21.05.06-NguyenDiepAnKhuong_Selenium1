@@ -1,5 +1,6 @@
 package PageObjects.Railway;
 
+import Common.Common.Utilities;
 import Common.Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -42,19 +43,17 @@ public class RegisterPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblRegisterMsg);
     }
 
-    public void register(String email, String password, String confirmPassword, String PID) {
+    public void register(String email, String password, String confirmPassword, String PID) throws InterruptedException {
         this.getTxtEmail().sendKeys(email);
         this.getTxtPassword().sendKeys(password);
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
         this.getTxtPID().sendKeys(PID);
         WebElement link = this.getBtnRegister();
         ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
+        Utilities.waitMultipleSeconds(5);
         link.click();
     }
 
-    //
-    //            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
-    //            link.click();
     public String getMessage() {
         try {
             return this.getLblRegisterMsg().getText();

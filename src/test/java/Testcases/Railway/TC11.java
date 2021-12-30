@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TC11 extends TestBase{
     @Test(description = "TC11 - User can't create account while password and PID fields are empty")
-    public void TC11(){
+    public void TC11() throws InterruptedException {
         HomePage homePage = new HomePage();
         RegisterPage registerPage = new RegisterPage();
 

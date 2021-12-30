@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TC10 extends TestBase{
     @Test(description = "TC10 - User can't create account with an already in-use email")
-    public void TC10(){
+    public void TC10() throws InterruptedException {
         HomePage homePage = new HomePage();
         RegisterPage registerPage = new RegisterPage();
 
