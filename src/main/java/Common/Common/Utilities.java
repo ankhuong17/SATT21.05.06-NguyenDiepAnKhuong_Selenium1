@@ -1,5 +1,8 @@
 package Common.Common;
 
+import Common.Constant.Constant;
+import org.openqa.selenium.support.ui.Select;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +38,12 @@ public class Utilities {
         }
         return Utilities.right(timestampStr, length);
     }
+    public static String getDateNow(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        String dateNow = dtf.format(now);
+        return dateNow;
+    }
 
     public static String right(String value, int length) {
         return value.substring(value.length() - length);
@@ -46,6 +55,6 @@ public class Utilities {
         }catch(InterruptedException interruptedException){
             interruptedException.printStackTrace();
         }
-
     }
+
 }
