@@ -15,7 +15,9 @@ public class GeneralPage {
     private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
     private final By tabChangePassword = By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']");
     private final By tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
-
+    private final By tabTimeTable = By.xpath("//div[@id='menu']//a[@href='TrainTimeListPage.cshtml']");
+    private final By tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
+    private final By pageTitle = By.xpath("//div[@id='content']/h1");
 
     public WebElement getLblLoginErrorMsg() {
         return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
@@ -55,6 +57,18 @@ public class GeneralPage {
 
     public WebElement getLblContactTitle() {
         return Constant.WEBDRIVER.findElement(lblContactPageTitle);
+    }
+
+    protected WebElement getTitle() {
+        return Constant.WEBDRIVER.findElement(pageTitle);
+    }
+
+    protected WebElement getTabTimeTable() {
+        return Constant.WEBDRIVER.findElement(tabTimeTable);
+    }
+
+    protected WebElement getTabMyTicket() {
+        return Constant.WEBDRIVER.findElement(tabMyTicket);
     }
 
     public LoginPage gotoLoginPage() {
@@ -99,5 +113,17 @@ public class GeneralPage {
     public boolean isHomePageDisplayed() {
         boolean isDisplayed = this.getLblHomePageTitle().isDisplayed();
         return isDisplayed;
+    }
+
+    public String getPageTitle() {
+        try {
+            return this.getTitle().getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void gotoTimeTable() {
+        this.getTabTimeTable().click();
     }
 }

@@ -39,7 +39,7 @@ public class Utilities {
         return Utilities.right(timestampStr, length);
     }
     public static String getDateNow(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("M/d/yyyy");
         LocalDateTime now = LocalDateTime.now();
         String dateNow = dtf.format(now);
         return dateNow;
