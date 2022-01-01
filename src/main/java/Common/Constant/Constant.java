@@ -29,7 +29,7 @@ public class Constant {
     public static final String ARRIVE_AT = "Sài Gòn";
     public static final String SEAT_TYPE = "Soft seat with air conditioner";
     public static final String TICKET_AMOUNT = "5";
-    public static final String DEPART_DATE_1="1/5/2022";
+    public static final String DEPART_DATE_1="1/10/2022";
 
 }
 

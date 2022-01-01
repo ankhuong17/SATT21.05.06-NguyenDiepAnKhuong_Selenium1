@@ -126,4 +126,8 @@ public class GeneralPage {
     public void gotoTimeTable() {
         this.getTabTimeTable().click();
     }
+
+    public void gotoMyTicket() {
+        this.getTabMyTicket().click();
+    }
 }
