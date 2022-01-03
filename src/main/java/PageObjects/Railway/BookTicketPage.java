@@ -21,7 +21,8 @@ public class BookTicketPage extends GeneralPage {
     private final By tdArriveStation = By.xpath("//div[@class='DivTable']//tr[@class='OddRow']//td[count(//div[@class='DivTable']//tr[@class='TableSmallHeader']//th[text()='Arrive Station']/preceding-sibling::th)+1]");
     private final By tdSeatType = By.xpath("//div[@class='DivTable']//tr[@class='OddRow']//td[count(//div[@class='DivTable']//tr[@class='TableSmallHeader']//th[text()='Seat Type']/preceding-sibling::th)+1]");
     private final By tdTicketAmount = By.xpath("//div[@class='DivTable']//tr[@class='OddRow']//td[count(//div[@class='DivTable']//tr[@class='TableSmallHeader']//th[text()='Amount']/preceding-sibling::th)+1]");
-
+    private final By lblTicketAmountValidationError = By.xpath("//li/label[text()='Ticket amount:']/following-sibling::label[@class='validation-error']");
+    private final By lblMessageError = By.xpath("//div/p[@class='message error']");
 
     //Elements
     protected Select getDdlDepartDate() {
@@ -70,6 +71,14 @@ public class BookTicketPage extends GeneralPage {
 
     protected WebElement getLblBookSuccessfully() {
         return Constant.WEBDRIVER.findElement(lblBookSuccessfully);
+    }
+
+    protected WebElement getLblTicketAmountValidationError() {
+        return Constant.WEBDRIVER.findElement(lblTicketAmountValidationError);
+    }
+
+    protected WebElement getLblErrorMessage() {
+        return Constant.WEBDRIVER.findElement(lblMessageError);
     }
 
     //Methods
@@ -152,6 +161,29 @@ public class BookTicketPage extends GeneralPage {
         try {
             return this.getTdTicketAmount().getText();
         } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void bookTicketMultipleTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            HomePage homePage = new HomePage();
+            homePage.gotoBookTicketPage();
+            this.bookTicket(Constant.DEPART_DATE, Constant.DEPART_FROM, Constant.ARRIVE_AT, Constant.SEAT_TYPE, "1");
+        }
+    }
+
+    public String getTicketAmountValidationErrorMessage() {
+        try {
+            return this.getLblTicketAmountValidationError().getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    public String getErrorMessage(){
+        try{
+            return this.getLblErrorMessage().getText();
+        }catch (Exception e){
             return "";
         }
     }

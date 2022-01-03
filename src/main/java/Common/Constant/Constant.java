@@ -24,12 +24,11 @@ public class Constant {
     public static final String PID = "1234567891";
     public static final String EMPTY_PID = "";
     //BOOKTICKET
-    public static final String DEPART_DATE = Utilities.getDateNow();
     public static final String DEPART_FROM = "Nha Trang";
     public static final String ARRIVE_AT = "Sài Gòn";
     public static final String SEAT_TYPE = "Soft seat with air conditioner";
     public static final String TICKET_AMOUNT = "5";
-    public static final String DEPART_DATE_1="1/10/2022";
+    public static final String DEPART_DATE="1/10/2022";
 
 }
 

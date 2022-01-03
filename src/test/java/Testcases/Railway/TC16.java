@@ -1,5 +1,6 @@
 package Testcases.Railway;
 
+import Common.Common.Utilities;
 import Common.Constant.Constant;
 import PageObjects.Railway.BookTicketPage;
 import PageObjects.Railway.HomePage;
@@ -16,19 +17,21 @@ public class TC16 extends TestBase{
         LoginPage loginPage = new LoginPage();
         BookTicketPage bookTicketPage = new BookTicketPage();
         MyTicketPage myTicketPage = new MyTicketPage();
-
+        System.out.println("1. Navigate to QA Railway Website");
         homePage.open();
+        System.out.println("2. Login with a valid account");
         homePage.gotoLoginPage();
         loginPage.login(Constant.USERNAME,Constant.PASSWORD).gotoBookTicketPage();
+        System.out.println("3. Book a ticket");
         bookTicketPage.bookTicket(Constant.DEPART_DATE,Constant.DEPART_FROM, Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.TICKET_AMOUNT);
         Thread.sleep(5000);
+        System.out.println("4. Click on \"My ticket\" tab");
         homePage.gotoMyTicket();
+        System.out.println("5. Click on \"Cancel\" button of ticket which user want to cancel.");
         myTicketPage.clickCancelButton();
+        System.out.println("6. Click on \"OK\" button on Confirmation message \"Are you sure?\"");
         myTicketPage.clickOKAlert();
+        Utilities.waitMultipleSeconds(2);
 
-        String actualMsg = "";
-        String expectedMsg = "i don't know what to write here :((";
-
-        Assert.assertEquals(actualMsg, expectedMsg, "The canceled ticket is not disappeared.");
     }
 }

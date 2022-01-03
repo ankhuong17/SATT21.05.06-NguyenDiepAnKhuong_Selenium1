@@ -28,12 +28,12 @@ public class TC14 extends TestBase{
         System.out.println("6. Select \"Soft seat with air conditioner\" for \"Seat type\"");
         System.out.println("7. Select \"5\" for \"Ticket amount\"");
         System.out.println("8. Click on \"Book ticket\" button");
-        bookTicketPage.bookTicket(Constant.DEPART_DATE_1,Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.TICKET_AMOUNT);
+        bookTicketPage.bookTicket(Constant.DEPART_DATE,Constant.DEPART_FROM,Constant.ARRIVE_AT,Constant.SEAT_TYPE,Constant.TICKET_AMOUNT);
         //Utilities.waitMultipleSeconds(3);
         String actualMsg = bookTicketPage.getSuccessMessage();
         String expectedMsg = "Ticket booked successfully!";
         String actualDepartDate = bookTicketPage.getTicketDepartDate();
-        String expectedDepartDate = Constant.DEPART_DATE_1;
+        String expectedDepartDate = Constant.DEPART_DATE;
         String actualDepartStation = bookTicketPage.getTicketDepartStation();
         String expectedDepartStation = Constant.DEPART_FROM;
         String actualArriveStation = bookTicketPage.getTicketArriveStation();
