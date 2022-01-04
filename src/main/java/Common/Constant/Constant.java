@@ -5,12 +5,13 @@ import Common.Common.Utilities;
 import org.openqa.selenium.WebDriver;
 
 import java.security.SecureRandom;
+import java.text.ParseException;
 import java.util.Random;
 
 public class Constant {
 
     public static WebDriver WEBDRIVER;
-    public static final String RAILWAY_URL = "http://www.railway.somee.com/";
+    public static final String RAILWAY_URL = "http://www.raillog.somee.com/";
     //USERNAME/EMAIL
     public static final String USERNAME = "khuong.nguyendiepan@gmail.com";
     public static final String USERNAME_BLANK = "";
@@ -28,7 +29,9 @@ public class Constant {
     public static final String ARRIVE_AT = "Sài Gòn";
     public static final String SEAT_TYPE = "Soft seat with air conditioner";
     public static final String TICKET_AMOUNT = "5";
-    public static final String DEPART_DATE="1/10/2022";
+    public static final String DEPART_DATE = Utilities.getNextDays(7);
+
+
 
 }
 

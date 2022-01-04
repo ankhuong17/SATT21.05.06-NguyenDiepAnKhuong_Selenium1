@@ -1,11 +1,11 @@
 package Common.Common;
 
-import Common.Constant.Constant;
-import org.openqa.selenium.support.ui.Select;
-
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Random;
 
 public class Utilities {
@@ -39,10 +39,23 @@ public class Utilities {
         return Utilities.right(timestampStr, length);
     }
     public static String getDateNow(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("M/d/yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDateTime now = LocalDateTime.now();
         String dateNow = dtf.format(now);
         return dateNow;
+    }
+    public static String getNextDays(int Date){
+        String dt = getDateNow();  // Start date
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(sdf.parse(dt));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        c.add(Calendar.DATE, Date);  // number of days to add
+        dt = sdf.format(c.getTime());  // dt is now the new date
+        return dt;
     }
 
     public static String right(String value, int length) {

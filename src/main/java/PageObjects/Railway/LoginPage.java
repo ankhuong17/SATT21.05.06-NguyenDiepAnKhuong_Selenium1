@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends GeneralPage{
     private final By txtUsername = By.xpath("//input[@id='username']");
     private final By txtPassword = By.xpath("//input[@id='password']");
-    private final By btnLogin = By.xpath("//input[@value='login']");
+    private final By btnLogin = By.xpath("//input[@value='Login']");
     private final By lblLoginErrorMsg = By.xpath("//p[@class ='message error LoginForm']");
 
     public WebElement getTxtUsername()

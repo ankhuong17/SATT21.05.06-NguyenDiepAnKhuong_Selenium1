@@ -91,24 +91,23 @@ public class BookTicketPage extends GeneralPage {
             Select ddlDepartDate = this.getDdlDepartDate();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlDepartDate);
             ddlDepartDate.selectByVisibleText(departDate);
-            Thread.sleep(2000);
-
+            Thread.sleep(500);
             Select ddlDepartStation = this.getDdlDepartStation();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlDepartStation);
             ddlDepartStation.selectByVisibleText(departStation);
-            Thread.sleep(2000);
+            Thread.sleep(500);
             Select ddlArriveStation = this.getDdlArriveStation();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlArriveStation);
             ddlArriveStation.selectByVisibleText(arriveStation);
-            Thread.sleep(2000);
+            Thread.sleep(500);
             Select ddlSeatType = this.getDdlSeatType();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlSeatType);
             ddlSeatType.selectByVisibleText(seatType);
-            Thread.sleep(2000);
+            Thread.sleep(500);
             Select ddlTicketAmount = this.getDdlTicketAmount();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlTicketAmount);
             ddlTicketAmount.selectByVisibleText(ticketAmount);
-            Thread.sleep(5000);
+            Thread.sleep(500);
 
             getBtnBookTicket().click();
         } catch (Exception e) {
