@@ -1,7 +1,6 @@
 package PageObjects.Railway;
 
-import Common.Common.Utilities;
-import Common.Constant.Constant;
+import Common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -179,10 +178,11 @@ public class BookTicketPage extends GeneralPage {
             return "";
         }
     }
-    public String getErrorMessage(){
-        try{
+
+    public String getErrorMessage() {
+        try {
             return this.getLblErrorMessage().getText();
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }

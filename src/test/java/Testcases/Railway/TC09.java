@@ -1,6 +1,6 @@
 package Testcases.Railway;
 
-import Common.Constant.Constant;
+import Common.Constant;
 import PageObjects.Railway.ChangePasswordPage;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;

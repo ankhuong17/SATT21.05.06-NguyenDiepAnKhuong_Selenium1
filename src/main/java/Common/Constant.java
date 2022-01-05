@@ -1,12 +1,7 @@
-package Common.Constant;
+package Common;
 
 
-import Common.Common.Utilities;
 import org.openqa.selenium.WebDriver;
-
-import java.security.SecureRandom;
-import java.text.ParseException;
-import java.util.Random;
 
 public class Constant {
 
@@ -30,7 +25,6 @@ public class Constant {
     public static final String SEAT_TYPE = "Soft seat with air conditioner";
     public static final String TICKET_AMOUNT = "5";
     public static final String DEPART_DATE = Utilities.getNextDays(7);
-
 
 
 }

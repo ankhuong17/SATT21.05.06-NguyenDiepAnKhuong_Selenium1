@@ -1,7 +1,7 @@
 package PageObjects.Railway;
 
-import Common.Common.Utilities;
-import Common.Constant.Constant;
+import Common.Utilities;
+import Common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

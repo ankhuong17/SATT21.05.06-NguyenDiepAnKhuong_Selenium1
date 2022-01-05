@@ -1,17 +1,10 @@
 package Testcases.Railway;
 
-import Common.Common.Utilities;
-import Common.Constant.Constant;
+import Common.Constant;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class TC01 extends TestBase {
 

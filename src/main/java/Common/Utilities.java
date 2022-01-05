@@ -1,4 +1,4 @@
-package Common.Common;
+package Common;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -9,11 +9,11 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Utilities {
-    public static String getProjectPath() throws IOException {
-
+    public static String getProjectPath() {
         String currentDir = System.getProperty("user.dir");
 
         return currentDir;
+
     }
 
     public static String getRandomEmail() {
@@ -26,7 +26,7 @@ public class Utilities {
         }
         String saltStr = salt.toString();
         String dateTime = generateTimeStampString(14);
-        return saltStr +dateTime+ "@" + "abc.com";
+        return saltStr + dateTime + "@" + "abc.com";
     }
 
     public static String generateTimeStampString(int length) {
@@ -38,13 +38,15 @@ public class Utilities {
         }
         return Utilities.right(timestampStr, length);
     }
-    public static String getDateNow(){
+
+    public static String getDateNow() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDateTime now = LocalDateTime.now();
         String dateNow = dtf.format(now);
         return dateNow;
     }
-    public static String getNextDays(int Date){
+
+    public static String getNextDays(int Date) {
         String dt = getDateNow();  // Start date
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         Calendar c = Calendar.getInstance();
@@ -63,9 +65,9 @@ public class Utilities {
     }
 
     public static void waitMultipleSeconds(int seconds) {
-        try{
-            Thread.sleep(seconds*1000);
-        }catch(InterruptedException interruptedException){
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException interruptedException) {
             interruptedException.printStackTrace();
         }
     }

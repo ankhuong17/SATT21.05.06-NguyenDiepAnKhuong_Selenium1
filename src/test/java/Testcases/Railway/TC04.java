@@ -1,7 +1,6 @@
 package Testcases.Railway;
 
-import Common.Constant.Constant;
-import PageObjects.Railway.BookTicketPage;
+import Common.Constant;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 import org.testng.Assert;

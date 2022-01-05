@@ -1,6 +1,6 @@
 package Testcases.Railway;
 
-import Common.Constant.Constant;
+import Common.Constant;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 import PageObjects.Railway.TicketPricePage;
