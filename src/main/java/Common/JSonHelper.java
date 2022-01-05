@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class JSonHelper {
-    public static JsonObject getJsonObject(String jsonFilePath) {
+    public static JsonObject getJsonObject(String jsonFilePath)throws Exception {
         try {
             JsonObject obj = new JsonObject();
             Gson gson = new Gson();

@@ -50,7 +50,7 @@ public class RegisterPage extends GeneralPage {
         this.getTxtPID().sendKeys(PID);
         WebElement link = this.getBtnRegister();
         ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
-        Utilities.waitMultipleSeconds(5);
+        Utilities.waitMultipleSeconds(1);
         link.click();
     }
 

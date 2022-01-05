@@ -94,7 +94,11 @@ public class GeneralPage {
     }
 
     public String getLoginErrorMsg() {
-        return this.getLblLoginErrorMsg().getText();
+        try {
+            return this.getLblLoginErrorMsg().getText();
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     public void gotoChangePasswordPage() {

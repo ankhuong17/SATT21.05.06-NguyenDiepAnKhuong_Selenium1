@@ -7,6 +7,9 @@ public class Constant {
 
     public static WebDriver WEBDRIVER;
     public static final String RAILWAY_URL = "http://www.raillog.somee.com/";
+    public static final String BOOK_TICKET_PAGE_TITLE = "Book ticket";
+    public static final String LOGIN_PAGE_TITLE = "Login Page";
+    public static final String HOME_PAGE_TITLE = "Welcome to Safe Railway";
     //USERNAME/EMAIL
     public static final String USERNAME = "khuong.nguyendiepan@gmail.com";
     public static final String USERNAME_BLANK = "";

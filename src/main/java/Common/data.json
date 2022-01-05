@@ -1,0 +1,104 @@
+{
+  "TC01": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107"
+  },
+
+  "TC02": {
+    "email": "",
+    "password": "ankhuong3107"
+  },
+
+  "TC03": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107@@@!@#$%^&"
+  },
+
+  "TC04": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107"
+  },
+
+  "TC05": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107@@@!@#$%^&"
+  },
+
+  "TC06": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107"
+  },
+
+  "TC07": {
+    "password": "123456789",
+    "re_enter_password": "123456789",
+    "pid": "09876543210"
+  },
+
+  "TC08": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107"
+  },
+
+  "TC09": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107",
+    "new_password": "a123:\"/{}!@$\\",
+    "confirm_password": "b456:\"/{}!@$\\"
+  },
+
+  "TC10": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "123456789",
+    "confirm_password": "123456789",
+    "pid": "01234567890"
+  },
+
+  "TC11": {
+    "email": "ankhuong23456@gmail.com",
+    "password": "",
+    "new_password": "",
+    "confirm_password": ""
+  },
+
+  "TC14": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107",
+    "departFrom": "Nha Trang",
+    "arriveAt": "Sài Gòn",
+    "seatType": "Soft seat with air conditioner",
+    "ticketAmount": 5
+  },
+
+  "TC15": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107",
+    "pageTitle": "Ticket Price",
+    "ticketTitle": "Ticket price from Đà Nẵng to Sài Gòn",
+    "HSPrice": "310000",
+    "SSPrice":"335000",
+    "SSCPrice":"360000",
+    "HBPrice":"410000",
+    "SBPrice":"460000",
+    "SBCPrice":"510000"
+  },
+
+  "TC16": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107",
+    "departFrom": "Nha Trang",
+    "arriveAt": "Sài Gòn",
+    "seatType": "Soft seat with air conditioner",
+    "ticketAmount": 1
+  },
+
+  "TC17": {
+    "email": "khuong.nguyendiepan@gmail.com",
+    "password": "ankhuong3107",
+    "departFrom": "Nha Trang",
+    "arriveAt": "Sài Gòn",
+    "seatType": "Soft seat with air conditioner",
+    "ticketAmount": 1
+  }
+
+}

@@ -14,7 +14,7 @@ public class TestBase {
     @BeforeMethod
     public void beforeMethod() throws IOException {
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath() + "\\src\\main\\java\\Executables\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath() + "\\Executables\\chromedriver.exe");
         Constant.WEBDRIVER = new ChromeDriver();
         Dimension size = new Dimension(1920, 1080);
         Constant.WEBDRIVER.manage().window().setSize(size);

@@ -1,6 +1,7 @@
 package PageObjects.Railway;
 
 import Common.Constant;
+import Common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -102,11 +103,11 @@ public class BookTicketPage extends GeneralPage {
             Select ddlSeatType = this.getDdlSeatType();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlSeatType);
             ddlSeatType.selectByVisibleText(seatType);
-            Thread.sleep(500);
+
             Select ddlTicketAmount = this.getDdlTicketAmount();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlTicketAmount);
             ddlTicketAmount.selectByVisibleText(ticketAmount);
-            Thread.sleep(500);
+
 
             getBtnBookTicket().click();
         } catch (Exception e) {
@@ -163,11 +164,11 @@ public class BookTicketPage extends GeneralPage {
         }
     }
 
-    public void bookTicketMultipleTimes(int times) {
+    public void bookTicketMultipleTimes(String departDate, String departStation, String arriveStation, String seatType, String ticketAmount,int times) {
         for (int i = 0; i < times; i++) {
             HomePage homePage = new HomePage();
             homePage.gotoBookTicketPage();
-            this.bookTicket(Constant.DEPART_DATE, Constant.DEPART_FROM, Constant.ARRIVE_AT, Constant.SEAT_TYPE, "1");
+            this.bookTicket(departDate, departStation, arriveStation, seatType, "1");
         }
     }
 

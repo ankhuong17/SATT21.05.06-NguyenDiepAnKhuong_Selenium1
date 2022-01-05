@@ -36,8 +36,13 @@ public class LoginPage extends GeneralPage{
         this.getTabLogout().click();
     }
 
-    public void loginMultipleTimes(String username, String password, int n){
-
+    public void loginMultipleTimes(String username, String password, int times){
+        for (int i = 0; i < times; i++) {
+            System.out.println("count: "+(i+1)+" times");
+            this.getTxtUsername().sendKeys(username);
+            this.getTxtPassword().sendKeys(password);
+            this.getBtnLogin().click();
+        }
     }
 
 }

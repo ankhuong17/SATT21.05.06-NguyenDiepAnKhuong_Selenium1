@@ -1,14 +1,17 @@
 package Testcases.Railway;
 
 import Common.Constant;
+import Common.JSonHelper;
+import Common.Utilities;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.RegisterPage;
+import com.google.gson.JsonObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TC11 extends TestBase{
     @Test(description = "TC11 - User can't create account while password and PID fields are empty")
-    public void TC11() throws InterruptedException {
+    public void TC11() throws Exception {
         HomePage homePage = new HomePage();
         RegisterPage registerPage = new RegisterPage();
 
@@ -17,11 +20,21 @@ public class TC11 extends TestBase{
         System.out.println("2. Click on \"Register\" tab\n");
         homePage.gotoRegisterPage();
         System.out.println("3. Enter valid email address and leave other fields empty & 4. Click on \"Register\" button\n");
-        registerPage.register(Constant.RANDOM_EMAIL, Constant.BLANK_PASSWORD,Constant.BLANK_PASSWORD,Constant.EMPTY_PID);
+        String filePath = Utilities.getProjectPath() + "\\Common\\data.json";
+        JsonObject jsonObject = JSonHelper.getJsonObject(filePath);
+        JsonObject dataTC11 = jsonObject.getAsJsonObject(this.getClass().getSimpleName());
+        String email = dataTC11.get("email").getAsString();
+        registerPage.register(email, "","","");
 
-        String actualMsg = registerPage.getMessageError();
-        String expectedMsg = "There're errors in the form. Please correct the errors and try again.";
+        String actualErrorMsg = registerPage.getMessageError();
+        String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";
+        String actualPasswordErrorMsg = registerPage.getMessageError();
+        String expectedPasswordErrorMsg = "Invalid password length";
+        String actualPIDErrorMsg = registerPage.getMessageError();
+        String expectedPIDErrorMsg = "Invalid ID length.";
 
-        Assert.assertEquals(actualMsg, expectedMsg, "Error that user cannot register an account with an already in-use email.");
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is not displayed as expected.");
+        Assert.assertEquals(actualPasswordErrorMsg, expectedPasswordErrorMsg, "Password error message is not displayed as expected.");
+        Assert.assertEquals(actualPIDErrorMsg, expectedPIDErrorMsg, "PID error message is not displayed as expected.");
     }
 }

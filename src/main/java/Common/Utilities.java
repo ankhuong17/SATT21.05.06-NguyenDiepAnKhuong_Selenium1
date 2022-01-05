@@ -1,5 +1,8 @@
 package Common;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +15,7 @@ public class Utilities {
     public static String getProjectPath() {
         String currentDir = System.getProperty("user.dir");
 
-        return currentDir;
+        return currentDir+"\\src\\main\\java";
 
     }
 
@@ -72,4 +75,7 @@ public class Utilities {
         }
     }
 
+    public void scrollDownToElement(WebElement element){
+        ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }
