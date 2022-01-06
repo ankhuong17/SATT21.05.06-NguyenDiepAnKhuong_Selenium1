@@ -88,6 +88,7 @@ public class BookTicketPage extends GeneralPage {
 
     public void bookTicket(String departDate, String departStation, String arriveStation, String seatType, String ticketAmount) {
         try {
+
             Select ddlDepartDate = this.getDdlDepartDate();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlDepartDate);
             ddlDepartDate.selectByVisibleText(departDate);
@@ -107,7 +108,6 @@ public class BookTicketPage extends GeneralPage {
             Select ddlTicketAmount = this.getDdlTicketAmount();
             ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlTicketAmount);
             ddlTicketAmount.selectByVisibleText(ticketAmount);
-
 
             getBtnBookTicket().click();
         } catch (Exception e) {

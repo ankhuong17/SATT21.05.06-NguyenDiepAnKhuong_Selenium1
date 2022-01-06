@@ -1,6 +1,7 @@
 package PageObjects.Railway;
 
 import Common.Constant;
+import Common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -17,9 +18,9 @@ public class TimeTablePage extends GeneralPage {
     //methods
     public void gotoTicketPrice() {
         try {
-            WebElement link = this.getLnkCheckPrice();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
-            link.click();
+            WebElement lnkCheckPrice = this.getLnkCheckPrice();
+            Utilities.scrollDownToElement(lnkCheckPrice);
+            lnkCheckPrice.click();
         } catch (Exception e) {
             System.out.println("Cannot navigate to Ticket Price page");
             e.printStackTrace();

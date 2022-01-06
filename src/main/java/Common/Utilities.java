@@ -75,7 +75,7 @@ public class Utilities {
         }
     }
 
-    public void scrollDownToElement(WebElement element){
+    public static void scrollDownToElement(WebElement element){
         ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }
