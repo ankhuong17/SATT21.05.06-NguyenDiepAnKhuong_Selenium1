@@ -1,7 +1,7 @@
 package Testcases.Railway;
 
 import Common.Constant;
-import Common.JSonHelper;
+import Common.JsonHelper;
 import Common.Utilities;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.RegisterPage;
@@ -20,11 +20,7 @@ public class TC11 extends TestBase{
         System.out.println("2. Click on \"Register\" tab\n");
         homePage.gotoRegisterPage();
         System.out.println("3. Enter valid email address and leave other fields empty & 4. Click on \"Register\" button\n");
-        String filePath = Utilities.getProjectPath() + "\\Common\\data.json";
-        JsonObject jsonObject = JSonHelper.getJsonObject(filePath);
-        JsonObject dataTC11 = jsonObject.getAsJsonObject(this.getClass().getSimpleName());
-        String email = dataTC11.get("email").getAsString();
-        registerPage.register(email, "","","");
+        registerPage.register(Constant.RANDOM_EMAIL, "","","");
 
         String actualErrorMsg = registerPage.getMessageError();
         String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";

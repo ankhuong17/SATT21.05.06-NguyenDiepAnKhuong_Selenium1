@@ -43,11 +43,7 @@ public class ChangePasswordPage {
     }
 
     public String getMessageError() {
-        try {
             return this.getLblMessageError().getText();
-        } catch (Exception e) {
-            return "";
-        }
     }
 
 }

@@ -1,7 +1,7 @@
 package Testcases.Railway;
 
 import Common.Constant;
-import Common.JSonHelper;
+import Common.JsonHelper;
 import Common.Utilities;
 import PageObjects.Railway.ContactPage;
 import PageObjects.Railway.HomePage;
@@ -22,25 +22,16 @@ public class TC06 extends TestBase {
 
         System.out.println("2. Login with valid Email and Password");
         homePage.gotoLoginPage();
-        String filePath = Utilities.getProjectPath() + "\\Common\\data.json";
-        JsonObject jsonObject = JSonHelper.getJsonObject(filePath);
-        JsonObject dataTC01 = jsonObject.getAsJsonObject(this.getClass().getSimpleName());
-        String email = dataTC01.get("email").getAsString();
-        String password = dataTC01.get("password").getAsString();
-        loginPage.login(email, password);
+        loginPage.login(Constant.EMAIL, Constant.PASSWORD);
+
         System.out.println("3. Click on \"Contact\" tab");
         loginPage.gotoContactPage();
-        boolean isContactTitleDisplayed = contactPage.isContactPageDisplayed();
-        Assert.assertTrue(isContactTitleDisplayed, "Contact Title is displayed failed.");
+
+        Assert.assertTrue(contactPage.isContactPageDisplayed(), "Contact Title is displayed failed.");
         System.out.println("4. Click on \"Log out\" tab");
         loginPage.logout();
-//        String actualMsg = loginPage.getPageTitle();
-//        String expectedMsg = "Welcome to Safe Railway";
 
-//        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not display as expected");
-
-        boolean isHomeTitleDisplayed = homePage.isHomePageDisplayed();
-        Assert.assertTrue(isHomeTitleDisplayed, "Homepage Title is displayed failed.");
+        Assert.assertTrue(homePage.isHomePageDisplayed(), "Homepage Title is displayed failed.");
 
     }
 }

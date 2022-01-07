@@ -86,29 +86,28 @@ public class BookTicketPage extends GeneralPage {
         Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
     }
 
-    public void bookTicket(String departDate, String departStation, String arriveStation, String seatType, String ticketAmount) {
+    public void bookTicket(String departDate, String departStation, String arriveStation, String seatType, int ticketAmount) {
         try {
 
             Select ddlDepartDate = this.getDdlDepartDate();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlDepartDate);
             ddlDepartDate.selectByVisibleText(departDate);
-            Thread.sleep(500);
+            Utilities.waitMultipleSeconds(1);
+
             Select ddlDepartStation = this.getDdlDepartStation();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlDepartStation);
             ddlDepartStation.selectByVisibleText(departStation);
-            Thread.sleep(500);
+            Utilities.waitMultipleSeconds(1);
+
             Select ddlArriveStation = this.getDdlArriveStation();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlArriveStation);
             ddlArriveStation.selectByVisibleText(arriveStation);
-            Thread.sleep(500);
+
             Select ddlSeatType = this.getDdlSeatType();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlSeatType);
             ddlSeatType.selectByVisibleText(seatType);
 
             Select ddlTicketAmount = this.getDdlTicketAmount();
-            ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", ddlTicketAmount);
-            ddlTicketAmount.selectByVisibleText(ticketAmount);
+            ddlTicketAmount.selectByVisibleText(String.valueOf(ticketAmount));
+            Utilities.waitMultipleSeconds(1);
 
+            Utilities.scrollDownToElement(getBtnBookTicket());
             getBtnBookTicket().click();
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,74 +116,54 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public String getSuccessMessage() {
-        try {
-            return this.getLblBookSuccessfully().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getLblBookSuccessfully().getText();
     }
 
     public String getTicketDepartDate() {
-        try {
-            return this.getTdDepartDate().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTdDepartDate().getText();
     }
 
     public String getTicketDepartStation() {
-        try {
-            return this.getTdDepartStation().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTdDepartStation().getText();
+
     }
 
     public String getTicketArriveStation() {
-        try {
-            return this.getTdArriveStation().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTdArriveStation().getText();
     }
 
     public String getTicketSeatType() {
-        try {
-            return this.getTdSeatType().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTdSeatType().getText();
     }
 
-    public String getTicketAmount() {
-        try {
-            return this.getTdTicketAmount().getText();
-        } catch (Exception e) {
-            return "";
-        }
+    public int getTicketAmount() {
+        return Integer.parseInt(getTdTicketAmount().getText());
     }
 
-    public void bookTicketMultipleTimes(String departDate, String departStation, String arriveStation, String seatType, String ticketAmount,int times) {
+    public void bookTicketMultipleTimes(String departDate, String departStation, String arriveStation, String
+            seatType, int ticketAmount, int times) {
         for (int i = 0; i < times; i++) {
             HomePage homePage = new HomePage();
             homePage.gotoBookTicketPage();
-            this.bookTicket(departDate, departStation, arriveStation, seatType, "1");
+            this.bookTicket(departDate, departStation, arriveStation, seatType, ticketAmount);
         }
     }
 
     public String getTicketAmountValidationErrorMessage() {
-        try {
             return this.getLblTicketAmountValidationError().getText();
-        } catch (Exception e) {
-            return "";
-        }
     }
 
     public String getErrorMessage() {
-        try {
             return this.getLblErrorMessage().getText();
-        } catch (Exception e) {
-            return "";
+    }
+
+    public void bookMultipleTicketsWithDifferentDepartDate(String departDate, String departStation, String arriveStation, String
+            seatType, int ticketAmount, int times){
+        for (int i = 0; i < times; i++) {
+            HomePage homePage = new HomePage();
+            homePage.gotoBookTicketPage();
+            departDate = Utilities.getNextDays(i+5);
+            this.bookTicket(departDate, departStation, arriveStation, seatType, ticketAmount);
         }
     }
 }

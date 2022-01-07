@@ -7,12 +7,6 @@ import org.openqa.selenium.WebElement;
 public class TicketPricePage extends GeneralPage {
     //locators
     private final By lblTicketInfo = By.xpath("//tr[@class='TableSmallHeader']//th[@colspan='7']");
-    private final By txtHS = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='HS']");
-    private final By txtSS = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SS']");
-    private final By txtSSC = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SSC']");
-    private final By txtHB = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='HB']");
-    private final By txtSB = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SB']");
-    private final By txtSBC = By.xpath("//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SBC']");
     private final By txtHSPrice = By.xpath("//div[@class='DivTable']//th[contains(text(),'Price')]//following-sibling::td[count(//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='HS']//preceding-sibling::td)+1]");
     private final By txtSSPrice = By.xpath("//div[@class='DivTable']//th[contains(text(),'Price')]//following-sibling::td[count(//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SS']//preceding-sibling::td)+1]");
     private final By txtSSCPrice = By.xpath("//div[@class='DivTable']//th[contains(text(),'Price')]//following-sibling::td[count(//div[@class='DivTable']//th[contains(text(),'Seat type')]//following-sibling::td[text()='SSC']//preceding-sibling::td)+1]");
@@ -23,30 +17,6 @@ public class TicketPricePage extends GeneralPage {
     //elements
     protected WebElement getLblTicketInfo() {
         return Constant.WEBDRIVER.findElement(lblTicketInfo);
-    }
-
-    protected WebElement getTxtHS() {
-        return Constant.WEBDRIVER.findElement(txtHS);
-    }
-
-    protected WebElement getTxtSS() {
-        return Constant.WEBDRIVER.findElement(txtSS);
-    }
-
-    protected WebElement getTxtSSC() {
-        return Constant.WEBDRIVER.findElement(txtSSC);
-    }
-
-    protected WebElement getTxtHB() {
-        return Constant.WEBDRIVER.findElement(txtHB);
-    }
-
-    protected WebElement getTxtSB() {
-        return Constant.WEBDRIVER.findElement(txtSB);
-    }
-
-    protected WebElement getTxtSBC() {
-        return Constant.WEBDRIVER.findElement(txtSBC);
     }
 
     protected WebElement getTxtHSPrice() {
@@ -75,58 +45,30 @@ public class TicketPricePage extends GeneralPage {
 
     //methods
     public String getTextLblTicketInfo() {
-        try {
-            return this.getLblTicketInfo().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getLblTicketInfo().getText();
     }
 
     public String getHSPrice() {
-        try {
-            return this.getTxtHSPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtHSPrice().getText();
     }
 
     public String getSSPrice() {
-        try {
-            return this.getTxtSSPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtSSPrice().getText();
     }
 
     public String getSSCPrice() {
-        try {
-            return this.getTxtSSCPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtSSCPrice().getText();
     }
 
     public String getHBPrice() {
-        try {
-            return this.getTxtHBPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtHBPrice().getText();
     }
 
     public String getSBPrice() {
-        try {
-            return this.getTxtSBPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtSBPrice().getText();
     }
 
     public String getSBCPrice() {
-        try {
-            return this.getTxtSBCPrice().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTxtSBCPrice().getText();
     }
 }

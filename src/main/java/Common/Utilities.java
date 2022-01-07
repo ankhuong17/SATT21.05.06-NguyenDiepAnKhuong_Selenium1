@@ -3,20 +3,18 @@ package Common;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Utilities {
     public static String getProjectPath() {
         String currentDir = System.getProperty("user.dir");
-
-        return currentDir+"\\src\\main\\java";
-
+        return currentDir + "\\src\\main\\java";
     }
 
     public static String getRandomEmail() {
@@ -50,7 +48,7 @@ public class Utilities {
     }
 
     public static String getNextDays(int Date) {
-        String dt = getDateNow();  // Start date
+        String dt = getDateNow();
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         Calendar c = Calendar.getInstance();
         try {
@@ -58,8 +56,8 @@ public class Utilities {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        c.add(Calendar.DATE, Date);  // number of days to add
-        dt = sdf.format(c.getTime());  // dt is now the new date
+        c.add(Calendar.DATE, Date);
+        dt = sdf.format(c.getTime());
         return dt;
     }
 
@@ -67,15 +65,17 @@ public class Utilities {
         return value.substring(value.length() - length);
     }
 
-    public static void waitMultipleSeconds(int seconds) {
+    public static void waitMultipleSeconds(long seconds) {
         try {
-            Thread.sleep(seconds * 1000);
-        } catch (InterruptedException interruptedException) {
-            interruptedException.printStackTrace();
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void scrollDownToElement(WebElement element){
+    public static void scrollDownToElement(WebElement element) {
         ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+
 }

@@ -3,7 +3,6 @@ package PageObjects.Railway;
 import Common.Utilities;
 import Common.Constant;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
@@ -13,7 +12,7 @@ public class RegisterPage extends GeneralPage {
     private final By txtPID = By.xpath("//input[@id='pid']");
     private final By btnRegister = By.xpath("//input[@value='Register']");
     private final By lblRegisterErrorMsg = By.xpath("//p[@class ='message error']");
-    private final By lblRegisterMsg = By.xpath("//p[text()='Registration Confirmed! You can now log in to the site.']");
+    private final By lblRegisterMsg = By.xpath("//div[@id='content']");
 
     protected WebElement getTxtEmail() {
         return Constant.WEBDRIVER.findElement(txtEmail);
@@ -43,32 +42,31 @@ public class RegisterPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(lblRegisterMsg);
     }
 
-    public void register(String email, String password, String confirmPassword, String PID) throws InterruptedException {
+    public void register(String email, String password, String confirmPassword, String PID) {
         this.getTxtEmail().sendKeys(email);
         this.getTxtPassword().sendKeys(password);
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
         this.getTxtPID().sendKeys(PID);
-        WebElement link = this.getBtnRegister();
-        ((JavascriptExecutor) Constant.WEBDRIVER).executeScript("arguments[0].scrollIntoView(true);", link);
-        Utilities.waitMultipleSeconds(1);
-        link.click();
+        WebElement btnRegister = this.getBtnRegister();
+        Utilities.scrollDownToElement(btnRegister);
+        btnRegister.click();
     }
 
     public String getMessage() {
-        try {
             return this.getLblRegisterMsg().getText();
-        } catch (Exception e) {
-            return "";
-        }
     }
 
     public String getMessageError() {
-        try {
             return this.getLblRegisterErrorMsg().getText();
-        } catch (Exception e) {
-            return "";
-        }
     }
 
+    public String registerNewAccount() {
+        String email = Constant.RANDOM_EMAIL;
+        String password = Constant.REG_PASSWORD;
+        String confirmPassword = Constant.REG_CONFIRM_PASSWORD;
+        String PID =Constant.PID;
+        this.register(email, password, confirmPassword, PID);
+        return email;
+    }
 }
 

@@ -6,8 +6,8 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class JSonHelper {
-    public static JsonObject getJsonObject(String jsonFilePath)throws Exception {
+public class JsonHelper {
+    public static JsonObject getJsonObject(String jsonFilePath) {
         try {
             JsonObject obj = new JsonObject();
             Gson gson = new Gson();

@@ -12,15 +12,17 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TC14 extends TestBase {
-    @Test(description = "TC14 - User can book many tickets at a time", dataProvider = "data-provider")
-    public void TC14(String email, String password, String departDate, String departFrom, String arriveAt, String seatType, int ticketAmount) {
+import java.util.Locale;
 
+public class FTTC601 extends TestBase{
+    @Test(description = "FTTC601 - User can book 1 ticket at time",dataProvider = "data-provider")
+    public void  FTTC601(String email,String password,String departDate,String departFrom,String arriveAt,String seatType,int ticketAmount){
         HomePage homePage = new HomePage();
+        RegisterPage registerPage = new RegisterPage();
         LoginPage loginPage = new LoginPage();
         BookTicketPage bookTicketPage = new BookTicketPage();
-        RegisterPage registerPage = new RegisterPage();
-        System.out.println("Pre-condition: Create and activate a new account");
+
+        System.out.println("Pre-condition: Create and activate a new account.");
         homePage.open();
         homePage.gotoRegisterPage();
         email = registerPage.registerNewAccount();
@@ -32,14 +34,13 @@ public class TC14 extends TestBase {
         System.out.println("3. Click on \"Book ticket\" tab");
         System.out.println("4. Select a \"Depart date\" from the list");
         System.out.println("5. Select \"Nha Trang\" for \"Depart from\" and \"Huế\" for \"Arrive at\".");
-        System.out.println("6. Select \"Soft seat with air conditioner\" for \"Seat type\"");
-        System.out.println("7. Select \"5\" for \"Ticket amount\"");
+        System.out.println("6. Select \"Soft seat\" for \"Seat type\"");
+        System.out.println("7. Select \"2\" for \"Ticket amount\"");
         System.out.println("8. Click on \"Book ticket\" button");
-        departDate = Constant.DEPART_DATE;
         loginPage.login(email, password);
         loginPage.gotoBookTicketPage();
         homePage.gotoBookTicketPage();
-        bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+        bookTicketPage.bookTicket(departDate,departFrom, arriveAt,seatType,ticketAmount);
 
         String actualDepartDate = bookTicketPage.getTicketDepartDate();
         String expectedDepartDate = departDate;
@@ -59,25 +60,27 @@ public class TC14 extends TestBase {
         Assert.assertEquals(actualArriveStation, expectedArriveStation, "Arrive Station is not displayed as expected.");
         Assert.assertEquals(actualSeatType, expectedSeatType, "Seat type is not displayed as expected.");
         Assert.assertEquals(actualTicketAmount, expectedTicketAmount, "Ticket amount is not displayed as expected.");
-        Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected.");
+        Assert.assertEquals(actualMsg.toLowerCase(), expectedMsg.toLowerCase(), "Error message is not displayed as expected.");
+
     }
+
 
     @DataProvider(name = "data-provider")
     public Object[][] dataProvider() {
         String filePath = Utilities.getProjectPath() + "\\DataObjects\\data.json";
         System.out.println(filePath);
         JsonObject jsonObject = JsonHelper.getJsonObject(filePath);
-        JsonObject dataTC14 = jsonObject.getAsJsonObject(this.getClass().getSimpleName());
-        String email = "";
-        String password = dataTC14.get("password").getAsString();
+        JsonObject dataFTTC601 = jsonObject.getAsJsonObject(this.getClass().getSimpleName());
+        String email ="" ;
+        String password = dataFTTC601.get("password").getAsString();
         String departDate = Constant.DEPART_DATE;
-        String departStation = dataTC14.get("departFrom").getAsString();
-        String arriveStation = dataTC14.get("arriveAt").getAsString();
-        String seatType = dataTC14.get("seatType").getAsString();
-        int amount = dataTC14.get("ticketAmount").getAsInt();
+        String departStation = dataFTTC601.get("departFrom").getAsString();
+        String arriveStation = dataFTTC601.get("arriveAt").getAsString();
+        String seatType = dataFTTC601.get("seatType").getAsString();
+        int amount = dataFTTC601.get("ticketAmount").getAsInt();
 
         Object[][] object = new Object[][]{
-                {email, password, departDate, departStation, arriveStation, seatType, amount}
+                {email,password,departDate, departStation, arriveStation, seatType , amount}
         };
 
         return object;

@@ -8,10 +8,5 @@
             <class name="Testcases.Railway.FTTC602"></class>
             <class name="Testcases.Railway.FTTC603"></class>
         </classes>
-
-<!--        <packages>-->
-<!--            <package name="Testcases.Railway"></package>-->
-<!--        </packages>-->
-
     </test>
 </suite>

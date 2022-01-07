@@ -2,6 +2,7 @@ package PageObjects.Railway;
 
 import Common.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 public class GeneralPage {
@@ -17,7 +18,7 @@ public class GeneralPage {
     private final By tabContact = By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']");
     private final By tabTimeTable = By.xpath("//div[@id='menu']//a[@href='TrainTimeListPage.cshtml']");
     private final By tabMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
-    private final By pageTitle = By.xpath("//div[@id='content']/h1");
+    private final By lblpageTitle = By.xpath("//div[@id='content']/h1");
 
     public WebElement getLblLoginErrorMsg() {
         return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
@@ -60,7 +61,7 @@ public class GeneralPage {
     }
 
     protected WebElement getTitle() {
-        return Constant.WEBDRIVER.findElement(pageTitle);
+        return Constant.WEBDRIVER.findElement(lblpageTitle);
     }
 
     protected WebElement getTabTimeTable() {
@@ -71,34 +72,34 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(tabMyTicket);
     }
 
-    public LoginPage gotoLoginPage() {
+    public void gotoLoginPage() {
         this.getTabLogin().click();
-        return new LoginPage();
     }
 
     public WebElement getTabContact() {
         return Constant.WEBDRIVER.findElement(tabContact);
     }
 
-    public BookTicketPage gotoBookTicketPage() {
+    public void gotoBookTicketPage() {
         this.getTabBookTicket().click();
-        return new BookTicketPage();
     }
 
     public void gotoRegisterPage() {
         this.getTabRegister().click();
     }
 
-    public String getHomePageTitle() {
-        return this.getLblHomePageTitle().getText();
-    }
-
     public String getLoginErrorMsg() {
         try {
             return this.getLblLoginErrorMsg().getText();
-        } catch (Exception e) {
-            return "";
+        } catch (NoSuchElementException noSuchElementException) {
+            noSuchElementException.printStackTrace();
+            return "Error message is not displayed.";
         }
+    }
+
+    public boolean isLoginErrorMsg() {
+        boolean isDisplayed = Constant.WEBDRIVER.findElement(lblLoginErrorMsg).isDisplayed();
+        return isDisplayed;
     }
 
     public void gotoChangePasswordPage() {
@@ -120,11 +121,7 @@ public class GeneralPage {
     }
 
     public String getPageTitle() {
-        try {
-            return this.getTitle().getText();
-        } catch (Exception e) {
-            return "";
-        }
+        return this.getTitle().getText();
     }
 
     public void gotoTimeTable() {
